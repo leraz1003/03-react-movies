@@ -7,7 +7,9 @@ interface SearchBarProps {
 export default function SearchBar({ onSubmit }: SearchBarProps) {
   const handleSubmit = (formData: FormData) => {
     const moviename = formData.get("query") as string;
-    onSubmit(moviename);
+    if (moviename) {
+      onSubmit(moviename);
+    }
 
     if (!moviename) {
       toast.error("Please enter your search query.");
@@ -15,7 +17,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
   };
   return (
     <>
-      <Toaster position="top-center" reverseOrder={true} />;
+      <Toaster position="top-center" reverseOrder={true} />
       <header className={styles.header}>
         <div className={styles.container}>
           <a

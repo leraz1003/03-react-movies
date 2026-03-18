@@ -21,6 +21,7 @@ function App() {
     }
     try {
       setLoader(true);
+      setError(false);
       const data = await fetchMovies(topic);
       setMovies(data.results);
       console.log("data", data);
@@ -33,7 +34,6 @@ function App() {
       toast.error("Something went wrong");
     } finally {
       setLoader(false);
-      setError(false);
     }
   };
 
